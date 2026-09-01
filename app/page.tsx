@@ -144,7 +144,7 @@ export default function Home() {
       <section className="aboutSection" id="about">
         <div className="aboutLead"><p className="kicker">About + toolkit</p><h2>Statistical rigor.<br /><em>Builder energy.</em></h2></div>
         <div className="aboutBody">
-          <p>Currently studying Biometry &amp; Statistics at Cornell, with minors in Computer Science and Business. Previously studied Data Science + Mathematics at the University of Virginia.</p>
+          <p>Currently studying Biometry &amp; Statistics at Cornell, with minors in Computer Science and Business.</p>
           <div className="toolkit">
             <div><span>Model + analyze</span><p>Python · Pandas · NumPy · scikit-learn · PyTorch · XGBoost · R</p></div>
             <div><span>Build + ship</span><p>Next.js · JavaScript · FastAPI · Flask · REST APIs · WeChat Mini Programs</p></div>
