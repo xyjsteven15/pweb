@@ -44,8 +44,8 @@ const projects = [
 ];
 
 const experience = [
-  { year: '2026—Now', company: 'ByteDance · TRAE', role: 'Product Operations Intern', detail: 'Translating complex AI coding workflows into scalable product education, research, and feature recommendations.' },
-  { year: '2026—Now', company: 'Quantum Financial Advisor', role: 'Data Science Intern', detail: 'Building reusable Python and SQL workflows for portfolio, risk, and decision-ready analytics.' },
+  { year: '2026', company: 'ByteDance · TRAE', role: 'Product Operations Intern', detail: 'Translating complex AI coding workflows into scalable product education, research, and feature recommendations.' },
+  { year: '2026', company: 'Quantum Financial Advisor', role: 'Data Science Intern', detail: 'Building reusable Python and SQL workflows for portfolio, risk, and decision-ready analytics.' },
   { year: '2025—Now', company: 'Michael Charles Lab · Cornell', role: 'Undergraduate Researcher', detail: 'Developing climate and agriculture data pipelines, regression models, and scenario-based forecasts.' },
   { year: '2025', company: 'EY', role: 'Data Analytics Intern', detail: 'Automated financial-statement validation and variance analysis, saving approximately four hours each week.' },
 ];
