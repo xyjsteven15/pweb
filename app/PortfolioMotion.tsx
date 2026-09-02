@@ -201,9 +201,21 @@ export default function PortfolioMotion({ children }: { children: ReactNode }) {
         }
 
         if (isDesktop) {
-          gsap.to('.posterFrame', {
-            y: -24,
-            rotation: -1.2,
+          gsap.to('.phoneBack', {
+            y: -34,
+            rotation: -11,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.featureCard',
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 0.8,
+            },
+          });
+
+          gsap.to('.phoneFront', {
+            y: 32,
+            rotation: 10,
             ease: 'none',
             scrollTrigger: {
               trigger: '.featureCard',

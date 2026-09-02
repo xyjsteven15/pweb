@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import PortfolioMotion from './PortfolioMotion';
+import BookingPreview from './BookingPreview';
 
 const githubUrl = 'https://github.com/xyjsteven15';
 
@@ -134,16 +135,7 @@ export default function Home() {
             <div className="tags"><span>WXML</span><span>WXSS</span><span>JavaScript</span><span>Supabase-ready</span></div>
             <a className="textLink" href={`${githubUrl}/qiaoshuiting-miniprogram`} target="_blank" rel="noreferrer">View project <span>↗</span></a>
           </div>
-          <div className="miniProgramVisual posterVisual">
-            <span className="posterHalo" aria-hidden="true" />
-            <figure className="posterFrame">
-              <div className="posterCrop">
-                <img src="/pweb/qiaoshuiting-poster.png" alt="Qiaoshuiting private-dining poster with a WeChat Mini Program QR code" width="1650" height="1862" loading="lazy" />
-              </div>
-              <figcaption><span>Scan with WeChat</span><b>Open the mini program directly ↗</b></figcaption>
-            </figure>
-            <div className="posterStamp" aria-hidden="true"><span>LIVE</span><b>桥水汀</b><small>Poster · Mini program</small></div>
-          </div>
+          <BookingPreview />
         </article>
 
         <div className="projectGrid">
