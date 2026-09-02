@@ -38,22 +38,33 @@ export default function PortfolioMotion({ children }: { children: ReactNode }) {
           .fromTo('.nav', { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.55 })
           .fromTo('.availability', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0 }, '-=0.2')
           .fromTo('.hero h1', { autoAlpha: 0, y: 56 }, { autoAlpha: 1, y: 0, duration: 1.05 }, '-=0.45')
-          .fromTo('.heroFooter', { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0 }, '-=0.52');
+          .fromTo('.heroFooter', { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0 }, '-=0.52')
+          .fromTo('.heroExpression', { autoAlpha: 0, scale: 0.84, rotation: 7 }, { autoAlpha: 1, scale: 1, rotation: -2, duration: 0.82, ease: 'back.out(1.5)' }, '-=0.8');
 
-        gsap.to('.orbitOne', {
-          rotation: '+=360',
-          duration: 30,
-          repeat: -1,
-          ease: 'none',
-        });
+        const expressionFaces = ['.faceCurious', '.faceThinking', '.faceDizzy', '.faceAha'];
+        const expressionLabels = ['.labelCurious', '.labelThinking', '.labelDizzy', '.labelAha'];
 
-        gsap.to('.orbitTwo', {
-          y: -16,
-          scale: 1.14,
-          duration: 2.8,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
+        gsap.set(expressionFaces, { autoAlpha: 0, scale: 0.92 });
+        gsap.set(expressionLabels, { autoAlpha: 0, y: 6 });
+        gsap.set(expressionFaces[0], { autoAlpha: 1, scale: 1 });
+        gsap.set(expressionLabels[0], { autoAlpha: 1, y: 0 });
+
+        const expressionTimeline = gsap.timeline({ repeat: -1 });
+        const cardRotations = [-2, 1.5, -1, 2.2];
+
+        expressionFaces.forEach((face, index) => {
+          const nextIndex = (index + 1) % expressionFaces.length;
+          expressionTimeline
+            .to({}, { duration: 4.9 })
+            .to(face, { autoAlpha: 0, scale: 1.06, duration: 0.34, ease: 'power2.in' })
+            .to(expressionLabels[index], { autoAlpha: 0, y: -6, duration: 0.24 }, '<')
+            .fromTo(expressionFaces[nextIndex],
+              { autoAlpha: 0, scale: 0.88, rotation: index % 2 === 0 ? -4 : 4 },
+              { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.52, ease: 'back.out(1.55)' },
+              '-=0.06',
+            )
+            .to(expressionLabels[nextIndex], { autoAlpha: 1, y: 0, duration: 0.34 }, '<0.08')
+            .to('.heroExpression', { rotation: cardRotations[nextIndex], duration: 0.48, ease: 'power2.out' }, '<');
         });
 
         const revealTargets = gsap.utils.toArray<HTMLElement>(

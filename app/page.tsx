@@ -109,7 +109,24 @@ export default function Home() {
           <p>I&apos;m Steven Xu — a Cornell student building at the intersection of data science, AI, and product design.</p>
           <a className="roundLink" href="#work" aria-label="Explore selected work">↓</a>
         </div>
-        <div className="heroOrbit orbitOne" aria-hidden="true">PYTHON · SQL · PRODUCT ·</div><div className="heroOrbit orbitTwo" aria-hidden="true" />
+        <div className="heroExpression" aria-hidden="true">
+          <div className="expressionHeader"><span>SX / CURRENT MODE</span><span>LIVE LOOP</span></div>
+          <div className="expressionViewport">
+            <span className="expressionFace faceCurious" />
+            <span className="expressionFace faceThinking" />
+            <span className="expressionFace faceDizzy" />
+            <span className="expressionFace faceAha" />
+          </div>
+          <div className="expressionFooter">
+            <span>01—04</span>
+            <div className="expressionLabels">
+              <b className="expressionLabel labelCurious">Curious by default</b>
+              <b className="expressionLabel labelThinking">Thinking in systems</b>
+              <b className="expressionLabel labelDizzy">Too many tabs</b>
+              <b className="expressionLabel labelAha">Found the thread</b>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="manifesto" aria-label="Introduction">
