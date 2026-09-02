@@ -1,5 +1,6 @@
 import PortfolioMotion from './PortfolioMotion';
 import BookingPreview from './BookingPreview';
+import HeroCompanion from './HeroCompanion';
 
 const githubUrl = 'https://github.com/xyjsteven15';
 
@@ -105,27 +106,10 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="availability"><span /> Open to ambitious data + product work</div>
         <h1>I turn messy data into <em>products</em> people can use.</h1>
+        <HeroCompanion />
         <div className="heroFooter">
           <p>I&apos;m Steven Xu — a Cornell student building at the intersection of data science, AI, and product design.</p>
           <a className="roundLink" href="#work" aria-label="Explore selected work">↓</a>
-        </div>
-        <div className="heroExpression" aria-hidden="true">
-          <div className="expressionHeader"><span>SX / CURRENT MODE</span><span>LIVE LOOP</span></div>
-          <div className="expressionViewport">
-            <span className="expressionFace faceCurious" />
-            <span className="expressionFace faceThinking" />
-            <span className="expressionFace faceDizzy" />
-            <span className="expressionFace faceAha" />
-          </div>
-          <div className="expressionFooter">
-            <span>01—04</span>
-            <div className="expressionLabels">
-              <b className="expressionLabel labelCurious">Curious by default</b>
-              <b className="expressionLabel labelThinking">Thinking in systems</b>
-              <b className="expressionLabel labelDizzy">Too many tabs</b>
-              <b className="expressionLabel labelAha">Found the thread</b>
-            </div>
-          </div>
         </div>
       </section>
 
