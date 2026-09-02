@@ -1,3 +1,5 @@
+import PortfolioMotion from './PortfolioMotion';
+
 const githubUrl = 'https://github.com/xyjsteven15';
 
 const projects = [
@@ -81,6 +83,7 @@ function ProjectVisual({ type }: { type: string }) {
 
 export default function Home() {
   return (
+    <PortfolioMotion>
     <main>
       <nav className="nav" aria-label="Primary navigation">
         <a className="wordmark" href="#top" aria-label="Steven Xu, home">SX<span>/</span></a>
@@ -161,5 +164,6 @@ export default function Home() {
 
       <footer><a className="wordmark" href="#top">SX<span>/</span></a><p>Designed around curiosity, built with intent.</p><span>© 2026 Steven Xu</span></footer>
     </main>
+    </PortfolioMotion>
   );
 }
