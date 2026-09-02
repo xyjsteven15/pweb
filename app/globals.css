@@ -24,10 +24,6 @@ button { font-family:inherit; }
 .roundLink:hover { transform:rotate(0); }
 .heroOrbit { position:absolute; border-radius:50%; pointer-events:none; }
 .orbitOne,.orbitTwo { will-change:transform; }
-.heroBulb { position:absolute; z-index:3; top:-1px; right:clamp(28px,4.2vw,78px); width:clamp(76px,7.2vw,112px); height:clamp(118px,11vw,174px); pointer-events:none; transform-origin:50% 0; will-change:transform; }
-.bulbWire { position:absolute; z-index:0; top:0; left:50%; width:1px; height:42%; background:linear-gradient(#24221e,#5d554b); }
-.bulbGlow { position:absolute; z-index:0; left:50%; top:51%; width:116%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(255,207,87,.38) 0,rgba(255,170,38,.16) 34%,transparent 70%); transform:translate(-50%,-50%); filter:blur(8px); opacity:.62; will-change:transform,opacity; }
-.bulbImage { position:absolute; z-index:1; left:50%; top:28%; width:62%; height:auto; transform:translateX(-50%); mix-blend-mode:screen; filter:drop-shadow(0 0 10px rgba(255,185,42,.78)) drop-shadow(0 0 28px rgba(255,150,20,.42)); }
 .orbitOne { width:240px; height:240px; right:7%; top:16%; border:1px solid rgba(151,215,255,.42); color:var(--blue); font:10px var(--font-geist-mono); letter-spacing:.2em; display:grid; place-items:center; transform:rotate(17deg); }
 .orbitTwo { width:34px; height:34px; right:13%; top:32%; background:var(--blue); box-shadow:0 0 40px rgba(151,215,255,.55); }
 .kicker { margin:0; font-size:11px!important; line-height:1.2!important; font-weight:650; text-transform:uppercase; letter-spacing:.17em; }

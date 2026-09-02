@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import PortfolioMotion from './PortfolioMotion';
 import BookingPreview from './BookingPreview';
 
@@ -104,11 +103,6 @@ export default function Home() {
       </nav>
 
       <section className="hero" id="top">
-        <div className="heroBulb" aria-hidden="true">
-          <span className="bulbWire" />
-          <span className="bulbGlow" />
-          <img className="bulbImage" src="/pweb/glowing-bulb.png" alt="" width="54" height="84" />
-        </div>
         <div className="availability"><span /> Open to ambitious data + product work</div>
         <h1>I turn messy data into <em>products</em> people can use.</h1>
         <div className="heroFooter">

@@ -56,28 +56,6 @@ export default function PortfolioMotion({ children }: { children: ReactNode }) {
           ease: 'sine.inOut',
         });
 
-        gsap.fromTo(
-          '.heroBulb',
-          { rotation: -1.8 },
-          {
-            rotation: 1.8,
-            transformOrigin: '50% 0%',
-            duration: 3.4,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-          },
-        );
-
-        gsap.to('.bulbGlow', {
-          autoAlpha: 0.88,
-          scale: 1.14,
-          duration: 2.2,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-        });
-
         const revealTargets = gsap.utils.toArray<HTMLElement>(
           '.manifesto .kicker, .manifestoText, .proofRow, .sectionHead, .featureCard, .projectCard, .timelineRow, .aboutLead, .aboutBody, .contactSection .kicker, .contactSection h2, .contactLinks',
         );
