@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import PortfolioMotion from './PortfolioMotion';
 
 const githubUrl = 'https://github.com/xyjsteven15';
@@ -52,15 +53,18 @@ const experience = [
   { year: '2025', company: 'EY', role: 'Data Analytics Intern', detail: 'Automated financial-statement validation and variance analysis, saving approximately four hours each week.' },
 ];
 
+const coffeeResponse = 'Hi Maya — your move from research to product analytics caught my eye. I would love to compare notes over coffee.';
+
 function ProjectVisual({ type }: { type: string }) {
   if (type === 'focus') return (
     <div className="focusVisual visual" aria-hidden="true">
-      <div className="focusWindow"><div className="windowDots"><i /><i /><i /></div><div className="focusScore">84<span>focus score</span></div><div className="focusBars"><i /><i /><i /><i /><i /><i /></div></div>
+      <div className="focusWindow"><div className="windowDots"><i /><i /><i /></div><div className="focusScore"><b className="focusScoreValue">84</b><span>focus score</span></div><div className="focusBars"><i /><i /><i /><i /><i /><i /></div></div>
       <div className="extensionCard"><b>01:24:18</b><span>Deep work</span><small>Session active</small></div>
     </div>
   );
   if (type === 'segments') return (
     <div className="segmentsVisual visual" aria-hidden="true">
+      <div className="segmentSource"><b>100%</b><span>all customers</span></div>
       <div className="segmentStat"><b>76%</b><span>revenue from Champions</span></div>
       <div className="bubble bubbleA">23.2%</div><div className="bubble bubbleB">24.5%</div><div className="bubble bubbleC">32%</div><div className="bubble bubbleD">20.3%</div>
     </div>
@@ -68,8 +72,13 @@ function ProjectVisual({ type }: { type: string }) {
   if (type === 'coffee') return (
     <div className="coffeeVisual visual" aria-hidden="true">
       <div className="profileChip"><span>SX</span><div><b>Your profile</b><small>Goals + voice learned</small></div></div>
-      <div className="messageBubble">Hi Maya — your move from research to product analytics caught my eye...</div>
-      <div className="messageActions"><span>Warm</span><span>Concise</span><b>Generate ↗</b></div>
+      <div className="coffeePrompt"><span>Prompt</span><b>Write a warm intro using this portfolio</b></div>
+      <div className="coffeeThinking"><span className="thinkingSpark">✦</span><b>Thinking...</b><span className="thinkingDots"><i /><i /><i /></span></div>
+      <div className="coffeeResponse">
+        <small>Generated from portfolio</small>
+        <div className="messageBubble">{coffeeResponse.split(' ').map((word, index) => <span className="responseWord" key={`${word}-${index}`}>{word}{' '}</span>)}</div>
+      </div>
+      <div className="messageActions"><span>Warm</span><span>Concise</span><b>Regenerate ↗</b></div>
     </div>
   );
   return (
@@ -94,6 +103,11 @@ export default function Home() {
       </nav>
 
       <section className="hero" id="top">
+        <div className="heroBulb" aria-hidden="true">
+          <span className="bulbWire" />
+          <span className="bulbGlow" />
+          <img className="bulbImage" src="/pweb/glowing-bulb.png" alt="" width="54" height="84" />
+        </div>
         <div className="availability"><span /> Open to ambitious data + product work</div>
         <h1>I turn messy data into <em>products</em> people can use.</h1>
         <div className="heroFooter">
@@ -120,9 +134,15 @@ export default function Home() {
             <div className="tags"><span>WXML</span><span>WXSS</span><span>JavaScript</span><span>Supabase-ready</span></div>
             <a className="textLink" href={`${githubUrl}/qiaoshuiting-miniprogram`} target="_blank" rel="noreferrer">View project <span>↗</span></a>
           </div>
-          <div className="miniProgramVisual" aria-label="Abstract preview of the Qiaoshuiting mini program">
-            <div className="phone phoneBack"><div className="phoneTop" /><p>桥水汀</p><div className="roomShape" /><small>宴饮于此 · 雅聚成席</small></div>
-            <div className="phone phoneFront"><div className="phoneTop" /><small>选择包间</small><h3>徽来堂</h3><div className="capacity">11—20 位 · KTV</div><div className="dateStrip"><b>18</b><b>19</b><b>20</b></div><button type="button">预订包间</button></div>
+          <div className="miniProgramVisual posterVisual">
+            <span className="posterHalo" aria-hidden="true" />
+            <figure className="posterFrame">
+              <div className="posterCrop">
+                <img src="/pweb/qiaoshuiting-poster.png" alt="Qiaoshuiting private-dining poster with a WeChat Mini Program QR code" width="1650" height="1862" loading="lazy" />
+              </div>
+              <figcaption><span>Scan with WeChat</span><b>Open the mini program directly ↗</b></figcaption>
+            </figure>
+            <div className="posterStamp" aria-hidden="true"><span>LIVE</span><b>桥水汀</b><small>Poster · Mini program</small></div>
           </div>
         </article>
 
