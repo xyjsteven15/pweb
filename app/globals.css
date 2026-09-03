@@ -22,19 +22,14 @@ button { font-family:inherit; }
 .heroFooter p { max-width:510px; font-size:clamp(17px,1.55vw,23px); line-height:1.45; color:rgba(255,255,255,.72); margin:0; }
 .roundLink { width:64px; height:64px; border-radius:50%; display:grid; place-items:center; background:var(--coral); color:var(--ink); font-size:28px; transform:rotate(-30deg); transition:transform .25s ease; }
 .roundLink:hover { transform:rotate(0); }
-.heroCompanion { position:absolute; z-index:3; top:5%; right:4.5%; width:clamp(270px,24vw,350px); transform-origin:50% 50%; will-change:transform,opacity; }
-.expressionStage { position:relative; aspect-ratio:1; overflow:hidden; pointer-events:none; }
-.expressionFace { position:absolute; inset:0; background-image:url('/pweb/expression-sprite-v2.png'); background-repeat:no-repeat; background-size:300% 300%; mix-blend-mode:screen; opacity:0; visibility:hidden; will-change:transform,opacity; }
-.faceSmile { background-position:0 0; opacity:1; visibility:visible; }
-.faceThinking { background-position:50% 0; }
-.faceLookLeft { background-position:100% 0; }
-.faceLookRight { background-position:0 50%; }
-.faceCold { background-position:50% 50%; }
-.faceDizzy { background-position:100% 50%; }
-.faceStartled { background-position:0 100%; }
-.faceSkeptical { background-position:50% 100%; }
-.faceSleepy { background-position:100% 100%; }
-.companionChat { position:relative; margin-top:-13px; padding:10px; border:1px solid rgba(255,255,255,.23); border-radius:18px; background:rgba(17,17,15,.9); box-shadow:0 24px 55px rgba(0,0,0,.32); backdrop-filter:blur(14px); }
+.heroCompanion { position:absolute; z-index:3; top:9%; right:5%; width:clamp(280px,24vw,360px); }
+.expressionStage { position:relative; height:clamp(190px,19vw,270px); display:grid; place-items:center; pointer-events:none; }
+.minimalFace { display:flex; flex-direction:column; align-items:center; gap:40px; }
+.lineEyes { display:flex; align-items:center; gap:clamp(30px,3.2vw,48px); }
+.lineEye { width:clamp(58px,5vw,74px); height:clamp(36px,3.2vw,48px); border:3px solid white; border-radius:50%; display:grid; place-items:center; box-shadow:0 0 28px rgba(255,255,255,.07); will-change:transform; }
+.linePupil { width:clamp(11px,1vw,15px); height:clamp(11px,1vw,15px); border-radius:50%; background:var(--acid); box-shadow:0 0 18px rgba(223,255,88,.34); will-change:transform; }
+.lineMouth { width:clamp(70px,6.2vw,92px); height:clamp(25px,2.4vw,35px); border-bottom:4px solid white; border-radius:0 0 70px 70px; will-change:transform; }
+.companionChat { position:relative; padding:10px; border:1px solid rgba(255,255,255,.23); border-radius:18px; background:rgba(17,17,15,.82); box-shadow:0 24px 55px rgba(0,0,0,.28); backdrop-filter:blur(14px); }
 .chatTranscript { min-height:76px; max-height:126px; overflow:auto; padding:2px 2px 9px; display:flex; flex-direction:column; justify-content:flex-end; gap:7px; scrollbar-width:thin; }
 .chatTranscript p { width:fit-content; max-width:92%; margin:0; padding:8px 10px; border-radius:12px; font-size:11px; line-height:1.4; }
 .chatHint { align-self:center; color:rgba(255,255,255,.45); background:transparent; }

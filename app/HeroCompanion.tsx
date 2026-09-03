@@ -6,20 +6,6 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(useGSAP);
 
-const faceClasses = [
-  'faceSmile',
-  'faceThinking',
-  'faceLookLeft',
-  'faceLookRight',
-  'faceCold',
-  'faceDizzy',
-  'faceStartled',
-  'faceSkeptical',
-  'faceSleepy',
-];
-
-const ambientFaces = [2, 3, 4, 5, 6, 7, 8];
-
 const replies = [
   'I would start by asking what outcome would make this genuinely useful.',
   'The interesting part is usually hiding in the messy middle.',
@@ -37,91 +23,80 @@ const replies = [
 
 export default function HeroCompanion() {
   const root = useRef<HTMLDivElement>(null);
-  const activeFace = useRef(0);
-  const lastAmbientFace = useRef(-1);
-  const lastReply = useRef(-1);
-  const answering = useRef(false);
-  const restoreTimer = useRef<number | null>(null);
+  const ambientTimeline = useRef<gsap.core.Timeline | null>(null);
   const responseTimer = useRef<number | null>(null);
-  const animateTo = useRef<(index: number) => void>(() => undefined);
+  const lastReply = useRef(-1);
   const [question, setQuestion] = useState('');
   const [submittedQuestion, setSubmittedQuestion] = useState('');
   const [reply, setReply] = useState('');
   const [isThinking, setIsThinking] = useState(false);
 
-  useGSAP((_, contextSafe) => {
-    const faces = gsap.utils.toArray<HTMLElement>('.expressionFace');
+  useGSAP(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const eyes = gsap.utils.toArray<HTMLElement>('.lineEye');
+    const pupils = gsap.utils.toArray<HTMLElement>('.linePupil');
 
-    gsap.set(faces, { autoAlpha: 0, scale: 0.94 });
-    gsap.set(faces[0], { autoAlpha: 1, scale: 1 });
+    gsap.set(eyes, { scaleY: 1, rotation: 0, transformOrigin: '50% 50%' });
+    gsap.set(pupils, { x: 0, y: 0 });
+    gsap.set('.lineMouth', { scaleX: 1, y: 0, rotation: 0, transformOrigin: '50% 100%' });
 
-    animateTo.current = contextSafe!((nextIndex: number) => {
-      if (nextIndex === activeFace.current || !faces[nextIndex]) return;
+    if (reduceMotion) return;
 
-      const current = faces[activeFace.current];
-      const next = faces[nextIndex];
-
-      gsap.killTweensOf([current, next]);
-
-      if (reduceMotion) {
-        gsap.set(current, { autoAlpha: 0, scale: 0.94 });
-        gsap.set(next, { autoAlpha: 1, scale: 1, rotation: 0 });
-      } else {
-        gsap.timeline({ defaults: { overwrite: 'auto' } })
-          .to(current, { autoAlpha: 0, scale: 1.035, duration: 0.16, ease: 'power2.in' })
-          .fromTo(
-            next,
-            { autoAlpha: 0, scale: 0.9, rotation: nextIndex % 2 === 0 ? -2.5 : 2.5 },
-            { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.26, ease: 'back.out(1.45)' },
-            '-=0.03',
-          );
-      }
-
-      activeFace.current = nextIndex;
-    });
+    ambientTimeline.current = gsap.timeline({ repeat: -1, repeatDelay: 1.1 })
+      .to(eyes, { scaleY: 0.08, duration: 0.08, ease: 'power2.in' }, 2.4)
+      .to(eyes, { scaleY: 1, duration: 0.12, ease: 'power2.out' })
+      .to(pupils, { x: 8, duration: 0.34, ease: 'power2.inOut' }, '+=1.15')
+      .to(pupils, { x: -8, duration: 0.48, ease: 'power2.inOut' }, '+=0.8')
+      .to(pupils, { x: 0, duration: 0.34, ease: 'power2.out' }, '+=0.72')
+      .to('.lineMouth', { scaleX: 1.12, duration: 0.32, yoyo: true, repeat: 1, ease: 'sine.inOut' }, '<');
 
     return () => {
-      animateTo.current = () => undefined;
+      ambientTimeline.current?.kill();
+      ambientTimeline.current = null;
     };
   }, { scope: root });
 
-  useEffect(() => {
-    const ambientInterval = window.setInterval(() => {
-      if (answering.current) return;
+  useGSAP(() => {
+    const eyes = gsap.utils.toArray<HTMLElement>('.lineEye');
+    const pupils = gsap.utils.toArray<HTMLElement>('.linePupil');
+    const mouth = root.current?.querySelector<HTMLElement>('.lineMouth');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!mouth) return;
+    const duration = reduceMotion ? 0 : 0.28;
+    const timeline = gsap.timeline({ defaults: { duration, ease: 'power2.out', overwrite: 'auto' } });
 
-      const choices = ambientFaces.filter((index) => index !== lastAmbientFace.current);
-      const nextIndex = choices[Math.floor(Math.random() * choices.length)];
-      lastAmbientFace.current = nextIndex;
-      animateTo.current(nextIndex);
+    if (isThinking) {
+      ambientTimeline.current?.pause();
+      timeline
+        .to(pupils, { x: 0, y: -6 })
+        .to(eyes[0], { rotation: 7 }, '<')
+        .to(eyes[1], { rotation: -7 }, '<')
+        .to(mouth, { scaleX: 0.58, y: 7, rotation: -3 }, '<');
+    } else {
+      timeline
+        .to(eyes, { scaleY: 1, rotation: 0 })
+        .to(pupils, { x: 0, y: 0 }, '<')
+        .to(mouth, { scaleX: 1, y: 0, rotation: 0 }, '<')
+        .call(() => ambientTimeline.current?.resume());
+    }
 
-      if (restoreTimer.current) window.clearTimeout(restoreTimer.current);
-      restoreTimer.current = window.setTimeout(() => {
-        if (!answering.current) animateTo.current(0);
-      }, 2000);
-    }, 10000);
+    return () => timeline.kill();
+  }, { scope: root, dependencies: [isThinking], revertOnUpdate: true });
 
-    return () => {
-      window.clearInterval(ambientInterval);
-      if (restoreTimer.current) window.clearTimeout(restoreTimer.current);
-      if (responseTimer.current) window.clearTimeout(responseTimer.current);
-    };
+  useEffect(() => () => {
+    if (responseTimer.current) window.clearTimeout(responseTimer.current);
   }, []);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextQuestion = question.trim();
-    if (!nextQuestion || answering.current) return;
+    if (!nextQuestion || isThinking) return;
 
-    if (restoreTimer.current) window.clearTimeout(restoreTimer.current);
     if (responseTimer.current) window.clearTimeout(responseTimer.current);
-
-    answering.current = true;
     setSubmittedQuestion(nextQuestion);
     setQuestion('');
     setReply('');
     setIsThinking(true);
-    animateTo.current(1);
 
     responseTimer.current = window.setTimeout(() => {
       const choices = replies
@@ -132,17 +107,19 @@ export default function HeroCompanion() {
       lastReply.current = nextReply.index;
       setReply(nextReply.text);
       setIsThinking(false);
-      animateTo.current(0);
-      answering.current = false;
     }, 2000);
   }
 
   return (
     <div className="heroCompanion" ref={root}>
       <div className="expressionStage" aria-hidden="true">
-        {faceClasses.map((className) => (
-          <span className={`expressionFace ${className}`} key={className} />
-        ))}
+        <div className="minimalFace">
+          <div className="lineEyes">
+            <span className="lineEye"><i className="linePupil" /></span>
+            <span className="lineEye"><i className="linePupil" /></span>
+          </div>
+          <span className="lineMouth" />
+        </div>
       </div>
 
       <form className="companionChat" onSubmit={handleSubmit}>
