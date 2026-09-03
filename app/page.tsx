@@ -77,7 +77,7 @@ function ProjectVisual({ type }: { type: string }) {
       <div className="coffeeThinking"><span className="thinkingSpark">✦</span><b>Thinking...</b><span className="thinkingDots"><i /><i /><i /></span></div>
       <div className="coffeeResponse">
         <small>Generated from portfolio</small>
-        <div className="messageBubble">{coffeeResponse.split(' ').map((word, index) => <span className="responseWord" key={`${word}-${index}`}>{word}{' '}</span>)}</div>
+        <div className="messageBubble">{coffeeResponse.split(' ').map((word, index) => <span className="responseWord" key={`${word}-${index}`}>{word}{'\u00A0'}</span>)}</div>
       </div>
       <div className="messageActions"><span>Warm</span><span>Concise</span><b>Regenerate ↗</b></div>
     </div>
