@@ -1,6 +1,5 @@
 import PortfolioMotion from './PortfolioMotion';
 import BookingPreview from './BookingPreview';
-import HeroCompanion from './HeroCompanion';
 
 const githubUrl = 'https://github.com/xyjsteven15';
 
@@ -106,7 +105,6 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="availability"><span /> Open to ambitious data + product work</div>
         <h1>I turn messy data into <em>products</em> people can use.</h1>
-        <HeroCompanion />
         <div className="heroFooter">
           <p>I&apos;m Steven Xu — a Cornell student building at the intersection of data science, AI, and product design.</p>
           <a className="roundLink" href="#work" aria-label="Explore selected work">↓</a>
