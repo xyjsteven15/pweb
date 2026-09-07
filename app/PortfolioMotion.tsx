@@ -131,6 +131,7 @@ export default function PortfolioMotion({ children }: { children: ReactNode }) {
 
         const coffeeCard = scope.current?.querySelector<HTMLElement>('.projectCoral');
         if (coffeeCard) {
+          const coffeeSelect = gsap.utils.selector(coffeeCard);
           const coffeeTimeline = gsap.timeline({
             defaults: { ease: 'power2.out' },
             scrollTrigger: {
@@ -141,25 +142,46 @@ export default function PortfolioMotion({ children }: { children: ReactNode }) {
           });
 
           coffeeTimeline
-            .set('.coffeeThinking', { autoAlpha: 1, y: 0 })
-            .set('.coffeeResponse', { autoAlpha: 0, y: 12 })
-            .set('.responseWord', { autoAlpha: 0, y: 5 })
-            .set('.messageActions', { autoAlpha: 0, y: 8 })
-            .addLabel('thinking')
-            .fromTo('.thinkingSpark', { rotation: -18, scale: 0.7 }, { rotation: 18, scale: 1, duration: 0.45, repeat: 2, yoyo: true }, 'thinking')
-            .fromTo('.thinkingDots i', { y: 0, autoAlpha: 0.35 }, {
+            .set(coffeeSelect('.coffeeProfile'), { autoAlpha: 1, scale: 1, y: 0 })
+            .set(coffeeSelect('.profileScanBeam'), { autoAlpha: 0, y: -18 })
+            .set(coffeeSelect('.profileScanStatus'), { autoAlpha: 0, y: -6 })
+            .set(coffeeSelect('.profileScanComplete'), { autoAlpha: 0, scale: 0.9 })
+            .set(coffeeSelect('.coffeeThinking'), { autoAlpha: 0, y: 10 })
+            .set(coffeeSelect('.coffeeResponse'), { autoAlpha: 0, y: 16, scale: 0.98 })
+            .set(coffeeSelect('.responseWord'), { autoAlpha: 0, y: 5 })
+            .addLabel('scan')
+            .fromTo(coffeeSelect('.coffeeProfile'), { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'scan')
+            .to(coffeeSelect('.profileScanStatus'), { autoAlpha: 1, y: 0, duration: 0.3 }, 'scan+=0.25')
+            .to(coffeeSelect('.profileScanBeam'), { autoAlpha: 1, duration: 0.18 }, 'scan+=0.25')
+            .to(coffeeSelect('.profileScanBeam'), { y: 238, duration: 1.85, ease: 'power1.inOut' }, 'scan+=0.32')
+            .fromTo(coffeeSelect('.profileScanTarget'), { x: -5, opacity: 0.48 }, {
+              x: 0,
+              opacity: 1,
+              duration: 0.38,
+              stagger: 0.32,
+            }, 'scan+=0.36')
+            .addLabel('profileRead', 'scan+=2.18')
+            .to(coffeeSelect('.profileScanBeam'), { autoAlpha: 0, duration: 0.18 }, 'profileRead')
+            .to(coffeeSelect('.profileScanStatus'), { autoAlpha: 0, y: -5, duration: 0.2 }, 'profileRead')
+            .to(coffeeSelect('.profileScanComplete'), { autoAlpha: 1, scale: 1, duration: 0.35, ease: 'back.out(1.6)' }, 'profileRead+=0.08')
+            .addLabel('thinking', 'profileRead+=0.58')
+            .to(coffeeSelect('.coffeeProfile'), { scale: 0.97, y: -9, duration: 0.45 }, 'thinking')
+            .to(coffeeSelect('.profileScanComplete'), { autoAlpha: 0, duration: 0.22 }, 'thinking')
+            .to(coffeeSelect('.coffeeThinking'), { autoAlpha: 1, y: 0, duration: 0.3 }, 'thinking+=0.08')
+            .fromTo(coffeeSelect('.thinkingSpark'), { rotation: -18, scale: 0.7 }, { rotation: 18, scale: 1, duration: 0.42, repeat: 3, yoyo: true }, 'thinking+=0.08')
+            .fromTo(coffeeSelect('.thinkingDots i'), { y: 0, autoAlpha: 0.35 }, {
               y: -4,
               autoAlpha: 1,
               duration: 0.28,
               stagger: 0.12,
-              repeat: 2,
+              repeat: 3,
               yoyo: true,
-            }, 'thinking')
-            .addLabel('answer', 'thinking+=1.25')
-            .to('.coffeeThinking', { autoAlpha: 0, y: -7, duration: 0.25 }, 'answer')
-            .to('.coffeeResponse', { autoAlpha: 1, y: 0, duration: 0.3 }, 'answer+=0.16')
-            .to('.responseWord', { autoAlpha: 1, y: 0, duration: 0.16, stagger: 0.045 }, 'answer+=0.24')
-            .to('.messageActions', { autoAlpha: 1, y: 0, duration: 0.38 }, '>-=0.05');
+            }, 'thinking+=0.08')
+            .addLabel('answer', 'thinking+=1.55')
+            .to(coffeeSelect('.coffeeThinking'), { autoAlpha: 0, y: -7, duration: 0.25 }, 'answer')
+            .to(coffeeSelect('.coffeeProfile'), { autoAlpha: 0.35, scale: 0.94, y: -13, duration: 0.38 }, 'answer')
+            .to(coffeeSelect('.coffeeResponse'), { autoAlpha: 1, y: 0, scale: 1, duration: 0.38 }, 'answer+=0.12')
+            .to(coffeeSelect('.responseWord'), { autoAlpha: 1, y: 0, duration: 0.15, stagger: 0.036 }, 'answer+=0.2');
         }
 
         if (isDesktop) {

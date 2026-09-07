@@ -53,7 +53,7 @@ const experience = [
   { year: '2025', company: 'EY', role: 'Data Analytics Intern', detail: 'Automated financial-statement validation and variance analysis, saving approximately four hours each week.' },
 ];
 
-const coffeeResponse = 'Hi Maya — your move from research to product analytics caught my eye. I would love to compare notes over coffee.';
+const coffeeResponse = 'Hi Maya — your move from climate research into product analytics caught my eye. I’m exploring how teams turn complex data into products people actually use, and I’d love to compare notes over coffee.';
 
 function ProjectVisual({ type }: { type: string }) {
   if (type === 'focus') return (
@@ -71,14 +71,28 @@ function ProjectVisual({ type }: { type: string }) {
   );
   if (type === 'coffee') return (
     <div className="coffeeVisual visual" aria-hidden="true">
-      <div className="profileChip"><span>SX</span><div><b>Your profile</b><small>Goals + voice learned</small></div></div>
-      <div className="coffeePrompt"><span>Prompt</span><b>Write a warm intro using this portfolio</b></div>
-      <div className="coffeeThinking"><span className="thinkingSpark">✦</span><b>Thinking...</b><span className="thinkingDots"><i /><i /><i /></span></div>
+      <div className="coffeeProfile">
+        <div className="profileCover" />
+        <div className="profileIdentity profileScanTarget">
+          <span className="profileAvatar">MC<i /></span>
+          <div><b>Maya Chen</b><small>Product Analytics · New York</small></div>
+          <span className="profileConnect">2nd</span>
+        </div>
+        <p className="profileAbout profileScanTarget">Building thoughtful data products. Previously climate research.</p>
+        <div className="profileSignals">
+          <div className="profileScanTarget"><small>Now</small><b>Northstar AI</b><span>Product Analytics</span></div>
+          <div className="profileScanTarget"><small>Before</small><b>Cornell</b><span>Climate Research</span></div>
+          <div className="profileScanTarget"><small>Interested in</small><b>Human-centered AI</b><span>Experiments · Data products</span></div>
+        </div>
+        <div className="profileScanBeam" />
+        <div className="profileScanStatus"><i /><span>Reading profile</span></div>
+        <div className="profileScanComplete"><span>✓</span> Profile understood</div>
+      </div>
+      <div className="coffeeThinking"><span className="thinkingSpark">✦</span><b>Thinking about the right opening</b><span className="thinkingDots"><i /><i /><i /></span></div>
       <div className="coffeeResponse">
-        <small>Generated from portfolio</small>
+        <small>Personalized outreach</small>
         <div className="messageBubble">{coffeeResponse.split(' ').map((word, index) => <span className="responseWord" key={`${word}-${index}`}>{word}{'\u00A0'}</span>)}</div>
       </div>
-      <div className="messageActions"><span>Warm</span><span>Concise</span><b>Regenerate ↗</b></div>
     </div>
   );
   return (
