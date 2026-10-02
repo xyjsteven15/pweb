@@ -11,6 +11,7 @@ const projects = [
     description: 'A privacy-minded assistant spanning a Chrome extension, FastAPI service, and Next.js analytics dashboard — built to turn browser activity into useful focus signals.',
     stack: ['Next.js', 'FastAPI', 'Chrome MV3', 'SQLite', 'LLM APIs'],
     href: `${githubUrl}/FocusFlow-AI`,
+    note: null,
     className: 'projectBlue',
     visual: 'focus',
   },
@@ -21,6 +22,7 @@ const projects = [
     description: 'A reproducible RFM pipeline comparing clustering models across 1.06M transactions — surfacing four customer groups and clear retention priorities.',
     stack: ['Python', 'Pandas', 'scikit-learn', 'PCA', 'Plotly'],
     href: `${githubUrl}/customer-segmentation`,
+    note: null,
     className: 'projectAcid',
     visual: 'segments',
   },
@@ -31,25 +33,38 @@ const projects = [
     description: 'A personalized networking copilot that pairs a profile-learning agent with a Chrome extension and a full-stack message workspace.',
     stack: ['Next.js', 'Prisma', 'SQLite', 'Claude', 'Chrome MV3'],
     href: `${githubUrl}/coffee-chat-generator`,
+    note: null,
     className: 'projectCoral',
     visual: 'coffee',
   },
   {
     number: '05',
-    title: 'BigQuery Release Notes',
-    type: 'Live data product · Developer tooling',
-    description: 'A responsive feed reader that transforms Google Cloud Atom XML into filterable release cards with categories, sharing, and a polished dark interface.',
-    stack: ['Python', 'Flask', 'XML', 'JavaScript', 'REST'],
-    href: `${githubUrl}/xyjsteven15-event-talks-app`,
+    title: 'NBA Defensive Analytics',
+    type: 'Sports analytics · Ongoing',
+    description: 'Developing a Python model of NBA player defensive efficiency from player, lineup, and opponent data. The analysis measures shared court time for player pairs and adjusts defensive efficiency and scoring for opposing players’ ability.',
+    stack: ['Python', 'Player + lineup data', 'Opponent adjustment', 'Applied statistics'],
+    href: null,
+    note: 'Ongoing analysis',
     className: 'projectDark',
-    visual: 'release',
+    visual: 'nba',
+  },
+  {
+    number: '06',
+    title: 'UFC Fight Analytics',
+    type: 'Sports analytics · Cornell Data Journal',
+    description: 'Led a four-person team that scraped, cleaned, and analyzed 3,000+ UFC fight records in Python. We built analytical models and visualizations and published findings with methodological explanations; the article received 8,000+ views.',
+    stack: ['Python', 'Web scraping', 'Data pipelines', 'Visualization'],
+    href: null,
+    note: 'Published in Cornell Data Journal',
+    className: 'projectUfc',
+    visual: 'ufc',
   },
 ];
 
 const experience = [
   { year: '2026', company: 'ByteDance', role: 'Product Operations Intern', detail: 'Translating complex AI coding workflows into scalable product education, research, and feature recommendations.' },
   { year: '2026', company: 'Quantum Financial Advisor', role: 'Data Science Intern', detail: 'Building reusable Python and SQL workflows for portfolio, risk, and decision-ready analytics.' },
-  { year: '2025—Now', company: 'Michael Charles Lab · Cornell', role: 'Undergraduate Researcher', detail: 'Developing climate and agriculture data pipelines, regression models, and scenario-based forecasts.' },
+  { year: '2025—Now', company: 'Michael Charles Lab · Cornell', role: 'Undergraduate Researcher', detail: 'Built a 120K+ observation climate and agriculture pipeline and an XGBoost crop-yield model; now studying irrigation tradeoffs.' },
   { year: '2025', company: 'EY', role: 'Data Analytics Intern', detail: 'Automated financial-statement validation and variance analysis, saving approximately four hours each week.' },
 ];
 
@@ -95,11 +110,19 @@ function ProjectVisual({ type }: { type: string }) {
       </div>
     </div>
   );
+  if (type === 'nba') return (
+    <div className="nbaVisual visual" aria-hidden="true">
+      <div className="nbaVisualHead"><span>Defensive model / In development</span><b>NBA</b></div>
+      <div className="nbaPair"><span>Player A</span><span className="nbaPairJoin">+</span><span>Player B</span></div>
+      <div className="nbaShared">Shared court stints <span>→</span> Defensive outcomes</div>
+      <div className="nbaAdjusted"><small>Context adjustment</small><b>Opponent ability</b><span>Compare pairings across game contexts</span></div>
+    </div>
+  );
   return (
-    <div className="releaseVisual visual" aria-hidden="true">
-      <div className="releaseHeader"><span className="liveDot" /> Live feed <b>BigQuery</b></div>
-      <div className="releaseCard"><small>FEATURE · AUG 28</small><b>Vector search gets faster</b><span>Read update ↗</span></div>
-      <div className="releaseCard muted"><small>ANNOUNCEMENT · AUG 22</small><b>New region availability</b></div>
+    <div className="ufcVisual visual" aria-hidden="true">
+      <div className="ufcVisualHead">Cornell Data Journal <span>Sports analytics</span></div>
+      <div className="ufcVisualStats"><div><b>3,000+</b><span>fight records analyzed</span></div><div><b>8,000+</b><span>article views</span></div></div>
+      <div className="ufcVisualFlow">Scrape <span>·</span> Clean <span>·</span> Model <span>·</span> Explain</div>
     </div>
   );
 }
@@ -132,7 +155,7 @@ export default function Home() {
       </section>
 
       <section className="workSection" id="work">
-        <div className="sectionHead"><p className="kicker">Selected work</p><p>Systems, experiments, and mini programs — each one a different way of making complex work feel simple.</p></div>
+        <div className="sectionHead"><p className="kicker">Selected work</p><p>From product systems to sports analytics: ongoing NBA defensive modeling and published UFC fight analysis sit alongside my other builds.</p></div>
 
         <article className="featureCard">
           <div className="featureCopy">
@@ -150,7 +173,7 @@ export default function Home() {
             <article className={`projectCard ${project.className}`} key={project.title}>
               <div className="projectCardTop"><span>{project.number}</span><span>{project.type}</span></div>
               <ProjectVisual type={project.visual} />
-              <div className="projectCardCopy"><h3>{project.title}</h3><p>{project.description}</p><div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div><a className="textLink" href={project.href} target="_blank" rel="noreferrer">Explore build <span>↗</span></a></div>
+              <div className="projectCardCopy"><h3>{project.title}</h3><p>{project.description}</p><div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>{project.href ? <a className="textLink" href={project.href} target="_blank" rel="noreferrer">Explore build <span>↗</span></a> : <span className="projectNote">{project.note}</span>}</div>
             </article>
           ))}
         </div>
@@ -161,17 +184,25 @@ export default function Home() {
         <div className="timeline">
           {experience.map((item) => <article className="timelineRow" key={item.company}><p>{item.year}</p><div><h3>{item.company}</h3><span>{item.role}</span></div><p>{item.detail}</p></article>)}
         </div>
+        <article className="researchHighlight" id="research">
+          <div><p className="kicker">Research · Michael Charles Lab, Cornell University</p><h3>Crop Yield Prediction<br />&amp; Irrigation Optimization</h3><span className="researchStatus">Irrigation analysis ongoing</span></div>
+          <div className="researchDetails">
+            <p>Built a Python pipeline integrating 120K+ climate and agricultural observations, then trained an XGBoost regression model to predict crop-specific yields from climate variables and crop-model inputs.</p>
+            <p>Now comparing predicted yield gains against water input across irrigation levels to identify promising yield returns. No optimal irrigation level has been established yet.</p>
+            <p>Visualized rainfall deficits and predicted yields in Tableau and presented the methodology to agricultural partners and faculty.</p>
+          </div>
+        </article>
       </section>
 
       <section className="aboutSection" id="about">
         <div className="aboutLead"><p className="kicker">About + toolkit</p><h2>Statistical rigor.<br /><em>Builder energy.</em></h2></div>
         <div className="aboutBody">
-          <p>Currently studying Biometry &amp; Statistics at Cornell, with minors in Computer Science and Business.</p>
+          <p>Studying Biometry &amp; Statistics at Cornell, with minors in Computer Science and Business. I use Python, predictive modeling, and applied statistics across agriculture and sports, then communicate the findings clearly.</p>
           <div className="toolkit">
-            <div><span>Model + analyze</span><p>Python · Pandas · NumPy · scikit-learn · PyTorch · XGBoost · R</p></div>
+            <div><span>Model + analyze</span><p>Python · Pandas · NumPy · scikit-learn · PyTorch · XGBoost · R · predictive modeling · applied statistics · model evaluation</p></div>
             <div><span>Build + ship</span><p>Next.js · JavaScript · FastAPI · Flask · REST APIs · WeChat Mini Programs</p></div>
             <div><span>Query + scale</span><p>SQL · MySQL · Snowflake · AWS · Azure · GCP · data pipelines</p></div>
-            <div><span>Explain + decide</span><p>Tableau · Power BI · experimentation · forecasting · product strategy</p></div>
+            <div><span>Explain + decide</span><p>Tableau · Power BI · experimentation · forecasting · product strategy · clear quantitative communication</p></div>
           </div>
         </div>
       </section>
