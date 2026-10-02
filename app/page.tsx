@@ -182,7 +182,7 @@ export default function Home() {
       </section>
 
       <section className="experienceSection" id="experience">
-        <div className="sectionHead light"><p className="kicker">Experience</p><p>Across product, finance, research, and consulting.</p></div>
+        <div className="sectionHead light"><p className="kicker">Experience</p><p>Across product, finance, and research.</p></div>
         <div className="timeline">
           {experience.map((item) => <article className="timelineRow" key={item.company}><p>{item.year}</p><div><h3>{item.company}</h3><span>{item.role}</span></div><p>{item.detail}</p></article>)}
         </div>
@@ -208,12 +208,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contactSection">
-        <p className="kicker">Have a hard problem?</p><h2>Let&apos;s make it<br /><em>useful.</em></h2>
-        <div className="contactLinks"><a href="mailto:xyjsteven15@gmail.com">Email me ↗</a><a href="https://linkedin.com/in/sxxyj" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={githubUrl} target="_blank" rel="noreferrer">GitHub ↗</a></div>
-      </section>
-
-      <footer><a className="wordmark" href="#top">Steven Xu</a><p>Designed around curiosity, built with intent.</p><span>© 2026 Steven Xu</span></footer>
+      <footer>
+        <a className="wordmark" href="#top">Steven Xu</a>
+        <div className="footerLinks"><a href="mailto:xyjsteven15@gmail.com">Email</a><a href="https://linkedin.com/in/sxxyj" target="_blank" rel="noreferrer">LinkedIn</a><a href={githubUrl} target="_blank" rel="noreferrer">GitHub</a></div>
+        <span>© 2026 Steven Xu</span>
+      </footer>
     </main>
     </PortfolioMotion>
   );

@@ -41,7 +41,7 @@ export default function PortfolioMotion({ children }: { children: ReactNode }) {
           .fromTo('.heroFooter', { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0 }, '-=0.52');
 
         const revealTargets = gsap.utils.toArray<HTMLElement>(
-          '.manifesto .kicker, .manifestoText, .proofRow, .sectionHead, .featureCard, .projectCard, .timelineRow, .aboutLead, .aboutBody, .contactSection .kicker, .contactSection h2, .contactLinks',
+          '.manifesto .kicker, .manifestoText, .proofRow, .sectionHead, .featureCard, .projectCard, .timelineRow, .researchHighlight, .aboutLead, .aboutBody, .footerLinks',
         );
 
         revealTargets.forEach((element) => {
