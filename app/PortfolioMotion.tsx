@@ -36,8 +36,9 @@ export default function PortfolioMotion({ children }: { children: ReactNode }) {
 
         intro
           .fromTo('.nav', { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.55 })
+          .fromTo('.heroPortrait', { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.85 }, '-=0.2')
           .fromTo('.availability', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0 }, '-=0.2')
-          .fromTo('.hero h1', { autoAlpha: 0, y: 56 }, { autoAlpha: 1, y: 0, duration: 1.05 }, '-=0.45')
+          .fromTo('.hero h1', { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.95 }, '-=0.45')
           .fromTo('.heroFooter', { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0 }, '-=0.52');
 
         const revealTargets = gsap.utils.toArray<HTMLElement>(

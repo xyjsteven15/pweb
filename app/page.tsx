@@ -142,11 +142,16 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="heroTab">@xyjsteven15</div>
-        <div className="availability">Open to ambitious data + product work</div>
-        <h1>I turn messy data into <em>products people can use.</em></h1>
-        <div className="heroFooter">
-          <p>I&apos;m Steven Xu — a Cornell student building at the intersection of data science, AI, and product design.</p>
-          <a className="heroJump" href="#work">Explore selected work <span>↗</span></a>
+        <div className="heroMain">
+          <div className="heroPortrait"><img src="/pweb/steven-avatar.png" alt="Pixel portrait of Steven Xu" /></div>
+          <div className="heroCopy">
+            <div className="availability">Open to ambitious data + product work</div>
+            <h1>I turn messy data into <em>products people can use.</em></h1>
+            <div className="heroFooter">
+              <p>I&apos;m Steven Xu — a Cornell student building at the intersection of data science, AI, and product design.</p>
+              <a className="heroJump" href="#work">Explore selected work <span>↗</span></a>
+            </div>
+          </div>
         </div>
       </section>
 

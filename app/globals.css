@@ -179,13 +179,17 @@ a:focus-visible,button:focus-visible { outline:2px solid #111; outline-offset:4p
 .navLinks>a:not(.navCta):hover { color:#111; }
 .navRule { display:block; height:1px; background:#111; flex:1; min-width:18px; }
 .nav .wordmark { font:400 27px/1.2 Georgia,"Times New Roman",serif; letter-spacing:-.045em; text-decoration:none; white-space:nowrap; }
-.hero { min-height:0; padding:68px 8px 34px; display:block; overflow:visible; border-top:4px solid #111; border-bottom:6px double #111; background:#fff; color:#111; z-index:11; }
+.hero { min-height:0; padding:44px 8px 32px; display:block; overflow:visible; border-top:4px solid #111; border-bottom:6px double #111; background:#fff; color:#111; z-index:11; }
 .heroTab { position:absolute; top:-19px; left:50%; transform:translateX(-50%); border:1px solid #111; padding:8px 16px; background:#fff; font:13px var(--font-geist-mono); white-space:nowrap; }
+.heroMain { display:grid; grid-template-columns:minmax(190px,270px) minmax(0,1fr); align-items:center; gap:clamp(24px,3vw,44px); }
+.heroPortrait { width:100%; aspect-ratio:1; overflow:hidden; border:3px solid #111; border-radius:50%; background:#ededed; }
+.heroPortrait img { width:100%; height:100%; display:block; object-fit:cover; image-rendering:pixelated; }
+.heroCopy { min-width:0; }
 .availability { display:block; color:#333; font-size:13px; letter-spacing:0; text-transform:none; }
-.hero h1 { max-width:1050px; margin:30px 0 42px; font:400 clamp(46px,5.6vw,82px)/1.08 Georgia,"Times New Roman",serif; letter-spacing:-.055em; }
+.hero h1 { max-width:850px; margin:20px 0 24px; font:400 clamp(32px,2.8vw,44px)/1.14 Georgia,"Times New Roman",serif; letter-spacing:-.04em; }
 .hero h1 em { color:#111; font:inherit; }
-.heroFooter { align-items:end; gap:24px; }
-.heroFooter p { max-width:750px; color:#111; font:400 clamp(20px,2.15vw,30px)/1.32 Georgia,"Times New Roman",serif; }
+.heroFooter { align-items:end; gap:22px; }
+.heroFooter p { max-width:650px; color:#111; font:400 clamp(17px,1.45vw,22px)/1.36 Georgia,"Times New Roman",serif; }
 .heroJump { font-size:13px; white-space:nowrap; }
 .heroJump span { display:inline-block; border:1px solid #111; border-radius:50%; width:20px; height:20px; line-height:18px; text-align:center; text-decoration:none; }
 .kicker { font:400 14px/1.4 var(--font-geist-mono)!important; letter-spacing:0; text-transform:none; }
@@ -222,12 +226,17 @@ a:focus-visible,button:focus-visible { outline:2px solid #111; outline-offset:4p
 .phoneFront h3 { font-size:24px; }
 .projectGrid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; margin:0 0 12px; }
 .projectCard,.projectUfc { min-width:0; min-height:0; display:flex; flex-direction:column; padding:22px 12px 28px; border-radius:0; border-bottom:1px solid #111; background:#fff; color:#111; overflow:visible; }
+.projectUfc { grid-column:span 2; display:grid; grid-template-columns:minmax(0,.94fr) minmax(0,1fr); grid-template-rows:auto 1fr; column-gap:20px; border-right:0!important; padding-right:0; }
+.projectUfc .projectCardTop { grid-column:1/-1; }
+.projectUfc .ufcVisual { grid-column:1; grid-row:2; margin:0; width:100%; height:205px; min-height:205px; }
+.projectUfc .projectCardCopy { grid-column:2; grid-row:2; padding:0; }
 .projectCard:not(:nth-child(3n)) { border-right:1px solid #111; }
 .projectCard:nth-child(3n+1) { padding-left:0; }
 .projectCard:nth-child(3n) { padding-right:0; }
 .projectCardTop { justify-content:flex-start; gap:9px; min-height:34px; }
 .projectCardTop span:first-child { opacity:1; }
 .visual,.projectUfc .ufcVisual { width:100%; height:205px; min-height:205px; flex:0 0 205px; margin:0 0 18px; filter:grayscale(1); }
+.projectUfc .ufcVisual { height:auto; min-height:0; margin:0; align-self:stretch; flex-basis:auto; }
 .projectCard h3 { font:400 clamp(24px,2.1vw,31px)/1.08 Georgia,"Times New Roman",serif; letter-spacing:-.035em; }
 .projectCardCopy { padding:0; }
 .projectCardCopy>p { margin:10px 0 14px; font:400 13px/1.5 var(--font-geist-mono); }
@@ -309,6 +318,7 @@ footer .wordmark { color:#111; font:22px Georgia,"Times New Roman",serif; letter
   .projectCard { padding:22px 12px 28px!important; border-right:0!important; }
   .projectCard:nth-child(odd) { padding-left:0!important; border-right:1px solid #111!important; }
   .projectCard:nth-child(even) { padding-right:0!important; }
+  .projectUfc { grid-column:1/-1; border-right:0!important; padding-right:0!important; }
 }
 @media (max-width:700px) {
   main { width:calc(100% - 32px); }
@@ -317,9 +327,11 @@ footer .wordmark { color:#111; font:22px Georgia,"Times New Roman",serif; letter
   .navLinks { gap:8px; font-size:12px; }
   .navLinks>a:not(:last-child),.navLinks>span { display:none!important; }
   .navLinks>a:last-child { display:inline!important; }
-  .hero { padding:50px 2px 26px; }
+  .hero { padding:38px 2px 26px; }
   .heroTab { font-size:11px; top:-17px; padding:7px 10px; }
-  .hero h1 { margin:24px 0; font-size:clamp(38px,9vw,60px); }
+  .heroMain { grid-template-columns:1fr; gap:24px; }
+  .heroPortrait { width:min(46vw,190px); }
+  .hero h1 { margin:16px 0; font-size:clamp(30px,7vw,38px); }
   .heroFooter { display:block; }.heroFooter p { font-size:20px; }.heroJump { display:inline-block; margin-top:20px; }
   .manifesto { padding:25px 2px 35px; }.manifestoText { margin:22px 0; font-size:25px; }
   .proofRow { grid-template-columns:repeat(3,1fr); gap:9px; }.proofRow b { font-size:23px; }.proofRow span { font-size:10px; }.proofRow>a { margin-top:12px; }
@@ -327,6 +339,8 @@ footer .wordmark { color:#111; font:22px Georgia,"Times New Roman",serif; letter
   .featureCard { grid-template-columns:1fr; gap:18px; }.featureCopy { min-height:0; padding:0; }.miniProgramVisual { min-height:370px; }
   .projectGrid { grid-template-columns:1fr; }
   .projectCard,.projectCard:nth-child(odd),.projectCard:nth-child(even) { padding:18px 0 24px!important; border-right:0!important; }
+  .projectUfc { grid-column:auto; display:flex; }
+  .projectUfc .projectCardTop,.projectUfc .ufcVisual,.projectUfc .projectCardCopy { grid-column:auto; grid-row:auto; }
   .visual,.projectUfc .ufcVisual { height:250px; min-height:250px; flex-basis:250px; }
   .timelineRow { grid-template-columns:80px 1fr; gap:10px; }.timelineRow>p:last-child { grid-column:2; }
   .researchHighlight,.aboutSection { grid-template-columns:1fr; gap:18px; }
