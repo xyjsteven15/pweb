@@ -78,7 +78,7 @@ export default function BookingPreview() {
           {sent ? 'Booking sent ✓' : `Sep ${selectedDate} · ${selectedParty} guests`}
         </p>
         <button className={`sendBooking ${sent ? 'sent' : ''}`} type="button" onClick={() => setSent(true)}>
-          {sent ? 'Sent successfully' : 'Send booking'}
+          {sent ? 'Sent ✓' : 'Send booking'}
         </button>
       </div>
     </div>

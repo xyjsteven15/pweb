@@ -132,30 +132,32 @@ export default function Home() {
     <PortfolioMotion>
     <main>
       <nav className="nav" aria-label="Primary navigation">
-        <a className="wordmark" href="#top" aria-label="Steven Xu, home">SX<span>/</span></a>
+        <div className="navNote">Data, AI &amp; product <span className="navRule" /></div>
+        <a className="wordmark" href="#top" aria-label="Steven Xu, home">Steven Xu</a>
         <div className="navLinks">
-          <a href="#work">Work</a><a href="#experience">Experience</a><a href="#about">About</a>
-          <a className="navCta" href="mailto:xyjsteven15@gmail.com">Let&apos;s talk</a>
+          <span className="navRule" />
+          <a href="#work">Work</a><span>—</span><a href="#experience">Experience</a><span>—</span><a href="#about">About</a><span>—</span><a href="mailto:xyjsteven15@gmail.com">Email</a>
         </div>
       </nav>
 
       <section className="hero" id="top">
-        <div className="availability"><span /> Open to ambitious data + product work</div>
-        <h1>I turn messy data into <em>products</em> people can use.</h1>
+        <div className="heroTab">@xyjsteven15</div>
+        <div className="availability">Open to ambitious data + product work</div>
+        <h1>I turn messy data into <em>products people can use.</em></h1>
         <div className="heroFooter">
           <p>I&apos;m Steven Xu — a Cornell student building at the intersection of data science, AI, and product design.</p>
-          <a className="roundLink" href="#work" aria-label="Explore selected work">↓</a>
+          <a className="heroJump" href="#work">Explore selected work <span>↗</span></a>
         </div>
       </section>
 
       <section className="manifesto" aria-label="Introduction">
-        <p className="kicker">The short version</p>
+        <p className="kicker">About me</p>
         <p className="manifestoText">I like the whole problem: asking the right question, shaping the data, building the model, and shipping the interface that makes the answer <span>click.</span></p>
-        <div className="proofRow"><div><b>7</b><span>public builds</span></div><div><b>3.9</b><span>Cornell GPA</span></div><div><b>4</b><span>domains explored</span></div><a href="/pweb/Steven-Xu-Resume.pdf" target="_blank">Résumé ↗</a></div>
+        <div className="proofRow"><div><b>7</b><span>public builds</span></div><div><b>3.9</b><span>Cornell GPA</span></div><div><b>4</b><span>domains explored</span></div><a href="/pweb/Steven-Xu-Resume.pdf" target="_blank" rel="noreferrer">Résumé ↗</a></div>
       </section>
 
       <section className="workSection" id="work">
-        <div className="sectionHead"><p className="kicker">Selected work</p><p>From product systems to sports analytics: ongoing NBA defensive modeling and published UFC fight analysis sit alongside my other builds.</p></div>
+        <div className="sectionHead"><p className="kicker">Selected work</p><p>Products, experiments, and analysis across AI, data, and sport.</p></div>
 
         <article className="featureCard">
           <div className="featureCopy">
@@ -180,7 +182,7 @@ export default function Home() {
       </section>
 
       <section className="experienceSection" id="experience">
-        <div className="sectionHead light"><p className="kicker">Experience</p><p>Product instinct backed by analytical depth — developed across AI, finance, research, and consulting.</p></div>
+        <div className="sectionHead light"><p className="kicker">Experience</p><p>Across product, finance, research, and consulting.</p></div>
         <div className="timeline">
           {experience.map((item) => <article className="timelineRow" key={item.company}><p>{item.year}</p><div><h3>{item.company}</h3><span>{item.role}</span></div><p>{item.detail}</p></article>)}
         </div>
@@ -188,21 +190,20 @@ export default function Home() {
           <div><p className="kicker">Research · Michael Charles Lab, Cornell University</p><h3>Crop Yield Prediction<br />&amp; Irrigation Optimization</h3><span className="researchStatus">Irrigation analysis ongoing</span></div>
           <div className="researchDetails">
             <p>Built a Python pipeline integrating 120K+ climate and agricultural observations, then trained an XGBoost regression model to predict crop-specific yields from climate variables and crop-model inputs.</p>
-            <p>Now comparing predicted yield gains against water input across irrigation levels to identify promising yield returns. No optimal irrigation level has been established yet.</p>
-            <p>Visualized rainfall deficits and predicted yields in Tableau and presented the methodology to agricultural partners and faculty.</p>
+            <p>Now comparing predicted yield gains with water input across irrigation levels. I visualized rainfall deficits and predicted yields in Tableau and presented the method to agricultural partners and faculty. No optimal irrigation level has been established yet.</p>
           </div>
         </article>
       </section>
 
       <section className="aboutSection" id="about">
-        <div className="aboutLead"><p className="kicker">About + toolkit</p><h2>Statistical rigor.<br /><em>Builder energy.</em></h2></div>
+        <div className="aboutLead"><p className="kicker">Toolkit</p><h2>Statistical rigor.<br /><em>Builder energy.</em></h2></div>
         <div className="aboutBody">
           <p>Studying Biometry &amp; Statistics at Cornell, with minors in Computer Science and Business. I use Python, predictive modeling, and applied statistics across agriculture and sports, then communicate the findings clearly.</p>
           <div className="toolkit">
-            <div><span>Model + analyze</span><p>Python · Pandas · NumPy · scikit-learn · PyTorch · XGBoost · R · predictive modeling · applied statistics · model evaluation</p></div>
+            <div><span>Model + analyze</span><p>Python · Pandas · scikit-learn · PyTorch · XGBoost · R · applied statistics</p></div>
             <div><span>Build + ship</span><p>Next.js · JavaScript · FastAPI · Flask · REST APIs · WeChat Mini Programs</p></div>
-            <div><span>Query + scale</span><p>SQL · MySQL · Snowflake · AWS · Azure · GCP · data pipelines</p></div>
-            <div><span>Explain + decide</span><p>Tableau · Power BI · experimentation · forecasting · product strategy · clear quantitative communication</p></div>
+            <div><span>Query + scale</span><p>SQL · MySQL · Snowflake · AWS · Azure · GCP</p></div>
+            <div><span>Explain + decide</span><p>Tableau · Power BI · experimentation · forecasting · product strategy</p></div>
           </div>
         </div>
       </section>
@@ -212,7 +213,7 @@ export default function Home() {
         <div className="contactLinks"><a href="mailto:xyjsteven15@gmail.com">Email me ↗</a><a href="https://linkedin.com/in/sxxyj" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={githubUrl} target="_blank" rel="noreferrer">GitHub ↗</a></div>
       </section>
 
-      <footer><a className="wordmark" href="#top">SX<span>/</span></a><p>Designed around curiosity, built with intent.</p><span>© 2026 Steven Xu</span></footer>
+      <footer><a className="wordmark" href="#top">Steven Xu</a><p>Designed around curiosity, built with intent.</p><span>© 2026 Steven Xu</span></footer>
     </main>
     </PortfolioMotion>
   );
